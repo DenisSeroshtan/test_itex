@@ -1,0 +1,93 @@
+.header-top {
+	width: 100%;
+	background: $yellow;
+	border-top: rem(8px) solid $black;
+}
+.header-top__row {
+	@include row-flex;
+	padding: rem(20px) 0;
+	align-items: center;
+}
+.header__logo-link {
+	@include col;
+	display: block;
+	margin-right: 0;
+
+}
+.header-top__title {
+	@include col;
+	@include size(3);
+	@include size-sm(5);
+	@include size-xs(6);
+
+
+}
+.header-top__contacts {
+	white-space: nowrap;
+	text-align: right;
+	@include col;
+	@include size(4);
+	margin-left: auto;
+	@include size-md(6);
+	@include size-sm(12);
+	@include sm-block {
+		text-align: left;
+		margin-left: $offset_one_side;
+	}
+}
+
+.logo__svg {
+	max-width: rem(146px);
+	height: rem(76px);
+	fill: $black;
+}
+//-_-_-_-_-_-_-_-_-_-_-_-_-/nav/_-_-_-_-_-_-_-_-_-_-_-_-//
+
+.header-nav {
+	width: 100%;
+	background: $white;
+	text-transform: uppercase;
+	padding: rem(8px) 0;
+}
+.nav__img-wrap {
+	@include inline-block(middle);
+	width: rem(35px);
+	height: rem(34px);
+	margin-right: rem(51px);
+	@include md-block {
+		display: none;
+	}
+
+}
+.nav__img {
+	max-width: 100%;
+	max-height: 100%;
+}
+.nav {
+	@include inline-block(middle);
+}
+.nav__list {
+	display: flex;
+	flex-wrap: wrap;
+}
+.nav__item {
+	@include md-block {
+		margin-right: rem(20px);
+	}
+	margin-right: rem(35px);
+	white-space: nowrap;
+	&:last-child {
+		margin-right: 0;
+	}
+	&:hover {
+		.nav__link {
+			color: #010101;
+		}
+	}
+}
+.nav__link {
+	transition: color .25s ease;
+	&.active  {
+		color: #010101;
+	}
+}

@@ -1,1 +1,37 @@
-.header
+header.header
+	.header-top
+		.container
+			.header-top__row
+
+				a(href="#" class="header__logo-link")
+					+svg("logo__svg", "logo")
+				h2.header-top__title УСЛУГИ СТРОИТЕЛЬНОЙ ТЕХНИКИ
+
+				.header-top__contacts
+					.contacts__adress.
+						г. Екатеринбург,  ул.Маяковского, 25
+					.contacts__phone.
+						+7 (343) 222-20-17
+	.header-nav
+		.container
+			.nav__img-wrap
+				img(src="assets/img/header/icon-nav.svg"
+					alt="icon-svg" class="nav__img")
+			+nav('nav', "Каталог техники")
+	.header-mid
+		.container
+			.slider
+				.slider__wrap
+					ul.slider__list
+						-for(var i = 0; i < pricesSlider.length; i++)
+							li(class='slider__item ' + ((i == 0) ? "active" : ""))
+								img(src="assets/img/header/slider-img.png"
+									alt="image" class="slider__img")
+								.slider__title Профессиональная техника в аренду от
+									span.price__num= pricesSlider[i]
+									span.price__text  руб./сутки
+					.slider__nav
+						+svg("slider__arr slider-arr-prev", "arr-prev")
+						+svg("slider__arr slider__arr-next", "arr-next")
+					ul.slider__dots
+

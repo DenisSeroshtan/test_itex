@@ -60,7 +60,7 @@ $fields_xs: 15px;
 }
 
 @mixin wrapper(){
-    max-width: 970px;
+    max-width: 1000px;
     margin: 0 auto;
     @include wrapper-full();
 }

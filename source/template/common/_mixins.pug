@@ -21,43 +21,7 @@ mixin arrSvg(num)
 	svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 291.01178 129" height="129" width="291.01178" version="1.1" id="draw-svg-"+num class="work__svg-bg")
 		path(id="path4138" d="M 3.3821314,126.02828 46.475601,62.999427 3.0313514,3.799673 l 240.7182186,0 43.11847,58.769271 -43.28202,63.461766 z" style="fill:#f39f18;fill-opacity:0;stroke-opacity:1;stroke:#f39f18;stroke-width:5px")
 
-mixin workList
-	ul.work__list
-		-var k = 1
-		each value, key in workList
-			if (key == "human")
-				li.work__item
-					.work__item-wrap
-						+svg("work__icon-svg", key)
-						span.work__item-num= k+"."
-						.work__item-text
-							| #{value}
-					+firstArrSvg
-			else
-				li.work__item
-					-var num = ++k
-					.work__item-wrap
-						+svg("work__icon-svg", key)
-						span.work__item-num= num+"."
-						.work__item-text
-							| #{value}
-					+arrSvg(num)
-mixin form(mod= '')
-	form(class = "form " + mod)
-		if (mod == "about")
-			.form__title= form.titleFooter
-		else
-			.form__title= form.title
-		.form__text
-			p= form.text
-		label(class="label")
-			span.label__text Ваше имя:
-			input(name="name" type="text").input
-		label(class="label")
-			span.label__text Ваш телефон:
-			input(name="phone" type="text").input
-		.btn__wrap
-			+Btn("Отправить")
+
 mixin svg(className = '', id)
 	svg(class= className)
 		use(xlink:href=`/assets/svg/sprite.svg#${id}`)
@@ -67,13 +31,19 @@ mixin hamburger(link)
 		span.hamburger-box
 			span.hamburger-inner
 
-mixin nav(className, activeItem, id,  mod= "")
+mixin nav(className, activeItem,  mod= "")
 	nav(class= className)
-		+hamburger(id)
-		ul(class= className + "__list" + mod id=id)
+
+		ul(class= className + "__list" + mod)
 			each link, key in nav
-				li(class=className+'__item' + ( (key == activeItem) ?  ' '+'active' : '')+ mod)
-					a(href="#js-"+link class=className+"__link "+mod)= key
+				if (activeItem == "Каталог техники")
+					-if (key == "Главная") continue;
+					li(class=className + '__item' + mod)
+						a(href=link class=className + "__link " + ( (key == activeItem) ? ' ' + 'active' : '') + mod)= key
+
+				else
+					li(class=className + '__item'  + mod)
+						a(href=link class=className + "__link "+ ( (key == activeItem) ? ' ' + 'active' : '') + mod)= key
 
 
 mixin Btn (titleText, mod = "")
