@@ -154,13 +154,14 @@ var slider = (function () {
 
   }
 })();
-$(function () {
+
+(function () {
   if(('.slider').length) {
     slider.init({
-      dots: true
-      // auto: true
+      dots: true,
+      auto: true
       // duration : 2000
     });
   }
   // $('.slider__item').equalHeights();
-})
+})();
