@@ -1,0 +1,28 @@
+//color
+$yellow: #FFBB02;
+
+$black: #000;
+$white: #fff;
+$color-link: #818180;
+
+
+$fontawesome_path: '../fonts/fontawesome';
+
+
+
+//common style
+@import "_misc/mixins";
+@import "_misc/fonts";
+@import "_misc/smartgrid";
+@import "_misc/adjustment";
+@import "_misc/font-awesome";
+
+// animation
+//@import "_misc/preloader";
+//@import "common/hamburger";
+//@import "common/popup";
+
+
+//section
+//@import "common/header";
+
