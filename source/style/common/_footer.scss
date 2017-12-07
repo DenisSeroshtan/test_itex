@@ -1,0 +1,83 @@
+.footer{
+	width: 100%;
+	background: $black;
+}
+.footer__row {
+	@include row-flex;
+	align-items: center;
+	padding: rem(20px) 0;
+	.header__logo-link {
+		@include md-block{
+			margin: auto;
+		}
+	}
+}
+.footer-nav {
+	@include col;
+	@include size(5);
+  @include size-md(12);
+}
+.footer-nav__item {
+	display: inline-block;
+	white-space: nowrap;
+	margin-left: rem(27px);
+	&:hover {
+		.footer-nav__link {
+			color: #d3d3d3;
+		}
+	}
+}
+.footer-nav__link {
+	@include font-family(myriad);
+	line-height: rem(30px);
+	position: relative;
+	transition: color .25s ease;
+	&.active {
+		color: #d3d3d3;
+		@include pseudo(before, ">") {
+			color: $yellow;
+			position: absolute;
+			top: -50%;
+			right: 110%;
+		}
+	}
+}
+.footer__copyright {
+	@include col;
+	color : $color-link;
+	text-align: right;
+	margin-left: auto;
+	@include size-md(12);
+	@include md-block {
+		margin-top: rem(20px);
+		margin-left: $offset_one_side;
+		text-align: center;
+	}
+}
+.logo__svg_yellow {
+	fill: $yellow;
+	margin-right: rem(53px);
+	@include md-block {
+		margin-right: 0;
+	}
+}
+.copyright__info {
+	margin-top: rem(20px);
+}
+.copyright__info-link {
+	@include inline-block(middle);
+	transition: .25s ease;
+	text-decoration: underline;
+	&:hover {
+		color: #d3d3d3;
+		text-decoration: none;
+	}
+	@include pseudo() {
+		width: rem(21px);
+		height: rem(21px);
+		margin-right: rem(21px);
+		vertical-align: middle;
+		background: url("../img/itex_icon.png");
+		@include cover(#000);
+	}
+}
