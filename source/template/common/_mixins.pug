@@ -1,33 +1,13 @@
 mixin preloader
 	.preloader
 		.pulse
-mixin headerTop(mod="")
-	.container
-		div(class='header-top '+mod)
-			.header-top__wrap
-				a(href="#" class="logo__link")
-					+svg("logo__svg","logo")
-				if (mod == "footer")
-					+nav("nav", "Главная", "menu-footer")
-				else
-					+nav("nav", "Главная", "menu")
-				.phone-number +7 (495) 00-99-56
-
-mixin firstArrSvg
-	svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 291.01178 129" height="129" width="291.01178" version="1.1" id="draw-svg-1" class="work__svg-bg")
-		path(id="path4138" d="M 3.4644996,126.28999 3.1137219,4.0613763 l 240.7182181,0 43.11847,58.7692707 -43.28202,63.461773 z" style="fill:#f39f18;fill-opacity:0;stroke-opacity:1;stroke:#f39f18;stroke-width:5px")
-
-mixin arrSvg(num)
-	svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 291.01178 129" height="129" width="291.01178" version="1.1" id="draw-svg-"+num class="work__svg-bg")
-		path(id="path4138" d="M 3.3821314,126.02828 46.475601,62.999427 3.0313514,3.799673 l 240.7182186,0 43.11847,58.769271 -43.28202,63.461766 z" style="fill:#f39f18;fill-opacity:0;stroke-opacity:1;stroke:#f39f18;stroke-width:5px")
-
 
 mixin svg(className = '', id)
 	svg(class= className)
 		use(xlink:href=`/assets/svg/sprite.svg#${id}`)
 
 mixin hamburger(link)
-	a(href="#"+link).hamburger.hamburger--elastic
+	a(href="#" + link).hamburger.hamburger--elastic
 		span.hamburger-box
 			span.hamburger-inner
 
@@ -42,54 +22,56 @@ mixin nav(className, activeItem,  mod= "")
 						a(href=link class=className + "__link " + ( (key == activeItem) ? ' ' + 'active' : '') + mod)= key
 
 				else
-					li(class=className + '__item'  + mod)
-						a(href=link class=className + "__link "+ ( (key == activeItem) ? ' ' + 'active' : '') + mod)= key
+					li(class=className + '__item' + mod)
+						a(href=link class=className + "__link " + ( (key == activeItem) ? ' ' + 'active' : '') + mod)= key
 
 
-mixin Btn (titleText, mod = "")
-	if (titleText == "Отправить")
-		button(class= "btn" type="button") #{titleText}
-	else
-		a(href="#" class="btn " + mod) #{titleText}
+mixin btn (titleText, mod = "")
+		button(class= "product__btn "+ mod type="button") #{titleText}
 
-mixin sectionTop(title, desc = '', mod = '')
-	.section__top
-		.container
-			.top__row
-				if (title == "как мы работаем")
-					h2(class="top__title "+ mod) #{title}
-				else
-					h2(class="top__title "+ mod) #{title}
-					div(class="top__desc "+ mod)
-						p !{desc}
+mixin breadcrumbs(activeItem)
+	ul.breadcrumbs__list
+		-for (var i = 0; i<breadcrumbs.length; i++)
+			li(class="breadcrumbs__item")
+				a(href="#" class="breadcrumbs__item-link " + ((i == activeItem) ? "active" : ""))= breadcrumbs[i]
 
-mixin Top(sectionName)
-	section(class="section "+ sectionName id = "#js-"+ sectionName)
-		+sectionTop(secTitle[sectionName], desc[sectionName])
+mixin acco(mod)
+	.acco__wrap
+		if (mod == "Характеристики")
+			.acco__container.active
+				.acco-title= mod
+				ul.acco__content.acco__list
 
-mixin ratingList(obj, mod = "")
-	.container
-		ul(class= "rating__list " + mod)
-			each val, key in obj
-				li(class="rating__item " + mod)
-					if (key === "")
-						.content__item_wrap
-							+svg("account__svg", "book")
-					else
-						a(href= val["link"] class="item__link " + mod)= key
-						div(class="item__text " + mod )
-							p= val["text"]
+					-for(var i =1; i<=3; i++)
+						if (i ==1 )
+							li.acco__item
+								input(type="checkbox" name="checkbox"
+									class="check__input" id="check" + i
+									data-price=150000 checked)
+								label(class="check__text" for="check"+ i)= "Характеристика " + i
+						else
+							li.acco__item
+								input(type="checkbox" name="checkbox"
+								class="check__input" id="check" + i
+								data-price=200000)
+								label(class="check__text" for="check" + i)= "Характеристика " + i
+		else if (mod == "Информация")
+			.acco__container
+				.acco-title= mod
+				.acco__content.acco__text
+					p.
+						Lorem ipsum dolor sit amet, consectetur adipisicing
+						elit. Sunt expedita autem alias vel error, odio dolorum voluptatum,
+						eum ducimus aliquam, unde repudiandae ea tempora, hic assumenda delectus
+						itaque fuga molestiae adipisci! Voluptates ad similique culpa neque!
 
-mixin sectionBottom(btnText, mod = "")
-	div(class= "section__bottom " + mod id="js-btn_"+mod)
-		+Btn(btnText)
 
 mixin debug
 	.debug
 		div
 			div
 				- for (var i = 1; i <= 12; i++)
-					div
+				div
 
 mixin formHidden(email, name="site", text="Заявка с сайта")
 	// hidden required fields

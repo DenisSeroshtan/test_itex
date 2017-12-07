@@ -1,11 +1,8 @@
-$pathWhiteWave : "../img/decor/wave_white.png";
-$pathDarkWave : "../img/decor/wave_dark.png";
-$pathGreyWave : "../img/decor/wave_grey.png";
 
 @function rem($px){
 	@return $px/16px+0rem;
 }
-@mixin font($size:16px, $color:#333){
+@mixin font($size:16px, $color:$black){
 	font-size: rem($size);
 	color: $color;
 }
