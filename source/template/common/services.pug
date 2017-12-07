@@ -1,0 +1,15 @@
+section.section.services
+	.services-top
+		.container
+			h2.h2.services-top__title услуги
+	.services-bottom
+		.container
+			ul.services__list
+				each text, title in services
+					li.services__item
+						img(src="assets/img/services.svg" alt=""
+							class="services__item-img")
+						.services__item-desc
+							h3.h3.services__item-title= title
+							.services__item-text
+								p= text

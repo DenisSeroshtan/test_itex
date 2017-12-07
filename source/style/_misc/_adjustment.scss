@@ -73,9 +73,19 @@ h6 {
 	font-weight: normal;
 	margin: 0;
 }
-h2 {
-	line-height: 1.5;
+.h2 {
+	font-size: rem(24px);
+	line-height: rem(24px);
 	@include font-family(bold);
+}
+.h3 {
+	font-size: rem(20px);
+	line-height: rem(24px);
+	@include font-family(bold);
+}
+.h4 {
+	@include font-family(bold);
+	line-height: 1.5;
 }
 //reset input
 input,
