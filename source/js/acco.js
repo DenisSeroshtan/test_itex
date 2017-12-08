@@ -1,7 +1,4 @@
-//preloader
-window.onload = function() {
-  document.querySelector('.wrapper').classList.add('loaded');
-}
+
 $(function () {
   $(".acco-title").on('click', function (e) {
     e.preventDefault();
