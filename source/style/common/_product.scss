@@ -114,6 +114,7 @@
 	margin-top: rem(18px);
 }
 .product__price {
+	display: none;
 	@include inline-block(middle);
 	@include font-family(bold);
 	text-transform: uppercase;

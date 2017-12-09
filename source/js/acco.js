@@ -20,23 +20,23 @@ $(function () {
   })
 });
 $(function () {
+  var
+      checkbox = $('.check__input');
 
-  $('.check__input').on('change', calcPrice);
-
+  checkbox.on('change', calcPrice);
+  // console.log(checkbox)
   function calcPrice () {
     var
         price = 0,
         spanPrice = $(".product__price-num"),
-        checked = $("input:checked"),
+        checked = checkbox.filter(":checked"),
         cont = $(".product__price");
 
       if (!checked.length) {
         cont.stop(true,true).fadeOut();
-
-
       }else {
         checked.each(function () {
-          price += parseInt(checked.data('price'));
+          price += parseInt($(this).data('price'));
         });
 
         cont.stop(true,true).fadeIn();
@@ -50,4 +50,4 @@ $(function () {
   }
   calcPrice();
 
-})
+});
